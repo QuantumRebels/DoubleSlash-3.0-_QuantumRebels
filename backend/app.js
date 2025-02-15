@@ -30,6 +30,4 @@ app.get('/',async(req,res)=>{
 app.use('/auth',userRouter)
 
 app.use('/study',studyRouter)
-app.listen(5000,(req,res)=>{
-    console.log("Server is Running on Port 5000")
-})
+app.listen(5000,console.log("Server listening at port 5000"))

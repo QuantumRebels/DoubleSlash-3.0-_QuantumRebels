@@ -1,0 +1,6 @@
+numpy
+pandas
+google-generativeai
+matplotlib
+seaborn
+xhtml2pdf

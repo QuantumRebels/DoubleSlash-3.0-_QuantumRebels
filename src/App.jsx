@@ -36,7 +36,7 @@ function App() {
     
                 },
                 {
-                    path: "courses/alphabets",
+                    path: `courses/:id`,
                     element: <Alphabets />, 
     
                 },

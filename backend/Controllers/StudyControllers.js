@@ -9,14 +9,18 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-const createModule = async (title, description, category, teacherId) => {
+const createModule = async (title, description, category, teacherId,moduleimg,moduleprice) => {
   return await prisma.module.create({
-    data: { title, description, category, teacherId },
+    data: { title, description, category, teacherId,moduleimg,moduleprice },
   });
 };
 
 const getModules=async()=>{
   return await prisma.module.findMany();
+}
+
+const getmodulebyId=async(id)=>{
+  return await prisma.module.findMany({where:{id}});
 }
 
 const createLesson = async (title, signImgUrl, moduleId) => {
@@ -42,6 +46,9 @@ const moduleprogressupdates=async(userId,moduleId,moduleCompletion )=>{
   return await prisma.modulecompletion.create({
     data:{userId,moduleId,moduleCompletion}
   })
+}
+const getcompletemodules=async(userId,moduleId)=>{
+  return await prisma.modulecompletion.findMany({where:{userId:userId,moduleId:moduleId}})
 }
 
 const generateQuestion = async (modulename) => {
@@ -99,4 +106,4 @@ const updateresult=async(userId,exerciseId,isCorrect)=>{
 
 
 
-export {createModule,getModules,createLesson,getLessonsByModuleId,createExercise,generateQuestion,addContent,updateresult,userprogressupdates,moduleprogressupdates}
+export {createModule,getModules,getmodulebyId,createLesson,getLessonsByModuleId,getcompletemodules,createExercise,generateQuestion,addContent,updateresult,userprogressupdates,moduleprogressupdates}
