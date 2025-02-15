@@ -1,6 +1,6 @@
 
 import express from 'express'
-import {addContent, createExercise, createLesson, createModule, getModules, updateresult} from '../Controllers/StudyControllers.js'
+import {addContent, createExercise, createLesson, createModule, getLessonsByModuleId, getModules, moduleprogressupdates, updateresult, userprogressupdates} from '../Controllers/StudyControllers.js'
 
 const studyRouter=express.Router();
 
@@ -18,6 +18,18 @@ studyRouter.post('/createmodule',async(req,res)=>{
     }
 })
 
+studyRouter.get('/getmodules',async(req,res)=>{
+    try {
+        const response=await getModules()
+        if(response){
+            res.json({data:response})
+        }
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({message:"Error getting modules"})
+    }
+})
+
 studyRouter.post('/createLesson',async(req,res)=>{
     const {title, signImgUrl, moduleId}=req.body;
 
@@ -27,6 +39,43 @@ studyRouter.post('/createLesson',async(req,res)=>{
     }
     else{
         res.status(400).json({message:"Error creating lesson"})
+    }
+})
+
+studyRouter.get('/getlesson',async(req,res)=>{
+    const {moduleId}=req.query;
+    const response=await getLessonsByModuleId(moduleId);
+    if(response){
+        res.json({data:response})
+    }
+    else{
+        res.status(400).json({message:"Error getting lesson"})
+    }
+})
+
+studyRouter.post('/addattempted',async(req,res)=>{
+    try {
+        const {userId,question ,attemptedanswer ,correctanswer,timetaken ,isCorrect}=req.body;
+        const response=await userprogressupdates(userId,question ,attemptedanswer ,correctanswer,timetaken ,isCorrect)
+        if(response){
+            res.json({message:"Progress updated successfully",data:response})
+        }
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({message:"Error updating progress"})
+    }
+})
+
+studyRouter.post('/modulecompleted',async(req,res)=>{
+    try {
+        const {userId,moduleId,moduleCompletion}=req.body;
+        const response=await moduleprogressupdates(userId,moduleId,moduleCompletion)
+        if(response){
+            res.json({message:"Module completed successfully",data:response})
+        }
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({message:"Error updating module completion"})
     }
 })
 
@@ -79,14 +128,5 @@ studyRouter.post('/updateresult',async(req,res)=>{
     }
 })
 
-studyRouter.get('/getmodules',async(req,res)=>{
-    const response=await getModules();
-    if(response){
-        res.json({message:"Modules fetched successfully",data:response})
-    }
-    else{
-        res.status(400).json({message:"Error fetching modules"})
-    }
-})
 
 export default studyRouter
