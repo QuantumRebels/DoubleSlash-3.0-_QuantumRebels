@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/contexts/theme-context";
 import Analytics from "./routes/analytics/page"
 import Layout from "@/routes/layout";
 import DashboardPage from "@/routes/dashboard/page";
+import Courses from "@/routes/courses/page";
 
 function App() {
     const router = createBrowserRouter([
@@ -24,8 +25,8 @@ function App() {
                     element: <TestReview/>,
                 },
                 {
-                    path: "customers",
-                    element: <h1 className="title">Courses</h1>,
+                    path: "courses",
+                    element: <Courses/>,
                 },
                 {
                     path: "new-customer",

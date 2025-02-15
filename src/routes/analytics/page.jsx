@@ -2,7 +2,7 @@ import React from "react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useTheme } from "@/hooks/use-theme";
 import { AnalyticsData } from "@/constants";
-
+import ProfileImage from '../../assets/SaptaDev27.jpg'
 import { CreditCard, DollarSign, Package, PencilLine, Star, Trash, ShieldCheck, TrendingUp, Users, BookUser } from "lucide-react";
 
 const Analytics = () => {
@@ -14,8 +14,8 @@ const Analytics = () => {
     <div className="flex flex-col flex-wrap w-full">
       <div className="flex flex-row justify-between">
         <div className="avatar w-[25%] flex flex-col justify-center align-middle ">
-          <div className="ring-primary flex ml-12 ring-offset-base-100 w-48 rounded-full ring ring-offset-2">
-            <img className="w-48 rounded-full" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+          <div className="ring-primary flex ml-12  mt-4 ring-offset-base-100 w-48 rounded-full ring ring-offset-2">
+            <img className="w-48 h-48  object-fill  rounded-full" src={ProfileImage} />
           </div>
           <div className="text-center mt-6 ">
             <h2 className="text-2xl font-bold dark:text-blue-500">Saptarshi Paul</h2>
