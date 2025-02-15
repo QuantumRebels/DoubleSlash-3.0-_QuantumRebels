@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.4",
     "@syncfusion/ej2-react-kanban": "^28.2.3",
     "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
