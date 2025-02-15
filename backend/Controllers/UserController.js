@@ -32,7 +32,12 @@ const getusers=async()=>{
     return await prisma.userCredentials.findMany()
 }
 
+const updateUser=async(userId,profilepic)=>{
+    const user=await prisma.userCredentials.update({where:{userId},data:{profilepic:profilepic}})
+    return user
+
+}
 
 
-export {createUser,login,getusers}
+export {createUser,login,getusers,updateUser}
 
