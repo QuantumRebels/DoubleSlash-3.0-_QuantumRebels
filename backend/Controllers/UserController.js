@@ -28,7 +28,11 @@ const login=async(email,password,userRole)=>{
     return "Invalid Credentials"
 }
 
+const getusers=async()=>{
+    return await prisma.userCredentials.findMany()
+}
 
 
-export {createUser,login}
+
+export {createUser,login,getusers}
 

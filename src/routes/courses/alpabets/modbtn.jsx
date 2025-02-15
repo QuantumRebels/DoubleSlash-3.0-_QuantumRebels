@@ -1,13 +1,37 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ModuleCompletion = () => {
   const [completed, setCompleted] = useState(false);
+  const {id}=useParams()
+ 
+  const markcompleted=()=>{
+    axios.post(`${import.meta.env.VITE_DEV_URL}study/modulecompleted`,{userId:"192ee0b0-c661-4884-b081-6a84397474d9",moduleId:id,moduleCompletion:true})
+    .then(res=>{
+     
+      setCompleted(true)
+      
+    })
+  }
+  useEffect(()=>{
+    const checkcompleted=async()=>{
+      await axios.get(`${import.meta.env.VITE_DEV_URL}study/completedmodules`,{userId:"192ee0b0-c661-4884-b081-6a84397474d9",moduleId:id})
+      .then(res=>{
+        console.log(res.data.data)
+        if(res.data.data[0].moduleCompletion===true){
+          setCompleted(true)
+        }
+      })
+    }
+    checkcompleted()
+  },[])
 
   return (
     <div className="flex flex-col items-center gap-4 p-4 border rounded-lg shadow-lg w-80 mx-auto">
       {!completed ? (
         <button
-          onClick={() => setCompleted(true)}
+          onClick={markcompleted}
           className="px-6 py-2 bg-blue-500 text-white font-bold  rounded-lg hover:bg-blue-600 transition"
         >
           ✅ Mark Module as Completed

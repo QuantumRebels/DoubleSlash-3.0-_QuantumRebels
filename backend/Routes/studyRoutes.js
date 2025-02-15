@@ -1,14 +1,14 @@
 
 import express from 'express'
-import {addContent, createExercise, createLesson, createModule, getLessonsByModuleId, getModules, moduleprogressupdates, updateresult, userprogressupdates} from '../Controllers/StudyControllers.js'
+import {addContent, createExercise, createLesson, createModule, getcompletemodules, getLessonsByModuleId, getmodulebyId, getModules, moduleprogressupdates, updateresult, userprogressupdates} from '../Controllers/StudyControllers.js'
 
 const studyRouter=express.Router();
 
 studyRouter.post('/createmodule',async(req,res)=>{
     
     try {
-        const {title,description ,category,teacherId}=req.body;
-        const response=await createModule(title,description,category,teacherId);
+        const {title,description ,category,teacherId,moduleimg,moduleprice}=req.body;
+        const response=await createModule(title,description,category,teacherId,moduleimg,moduleprice);
         if(response){
             res.json({message:"Module created successfully",data:response})
         }
@@ -27,6 +27,17 @@ studyRouter.get('/getmodules',async(req,res)=>{
     } catch (error) {
         console.error(error)
         res.status(500).json({message:"Error getting modules"})
+    }
+})
+
+studyRouter.get('/getmodule',async(req,res)=>{
+    const {moduleId}=req.query;
+    const response=await getmodulebyId(moduleId)
+    if(response){
+        res.json({data:response})
+    }
+    else{
+        res.status(400).json({message:"Module not found"})
     }
 })
 
@@ -76,6 +87,17 @@ studyRouter.post('/modulecompleted',async(req,res)=>{
     } catch (error) {
         console.error(error)
         res.status(500).json({message:"Error updating module completion"})
+    }
+})
+
+studyRouter.get('/completedmodules',async(req,res)=>{
+    const {userId,moduleId}=req.body;
+    const response=await getcompletemodules(userId,moduleId)
+    if(response){
+        res.json({data:response})
+    }
+    else{
+        res.status(400).json({message:"Error getting completed modules"})
     }
 })
 
