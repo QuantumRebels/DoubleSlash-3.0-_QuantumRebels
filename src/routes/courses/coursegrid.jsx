@@ -13,36 +13,41 @@ const courses = [
     title: "Alphabets in ISL",
     image: Course1,
     description: "Learn the Indian Sign Language alphabets with interactive visuals.",
+    path : "/courses/alphabets"
   },
   {
     id: 2,
     title: "Numbers in ISL",
     image: Course2,
     description: "Understand number signs and counting in ISL with Interactive Modules",
+    path : "/courses/numbers"
   },
   {
     id: 3,
     title: "Mathematics of ISL",
     image: Course3,
     description: "Explore mathematical signs and problem-solving techniques in ISL.",
+    path : "/courses/maths"
   },
   {
     id: 4,
     title: "Science through ISL ",
     image:Course4,
     description: "Dive into scientific concepts and their representation in ISL.",
+    path : "/courses/science"
   },
   {
     id: 5,
     title: "Daily Conversations of ISL",
     image: Course5,
     description: "Master everyday communication using ISL with Interactive Modules",
+    path : "/courses/dailysigns"
   },
 ];
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="bg-white shadow-lg rounded-2xl overflow-hidden p-4 transition-transform transform hover:scale-105">
+    <div className="bg-white shadow-lg rounded-2xl mb-4 overflow-hidden p-4 transition-transform transform hover:scale-105">
       <img
         src={course.image}
         alt={course.title}
@@ -51,7 +56,7 @@ const CourseCard = ({ course }) => {
       <div className="mt-4">
         <h3 className="text-lg font-bold">{course.title}</h3>
         <p className="text-slate-950 mt-2 text-md">{course.description}</p>
-        <a href="/courses/alphabets">
+        <a href={course.path}>
         <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
           Explore Course
         </button>
@@ -64,7 +69,7 @@ const CourseCard = ({ course }) => {
 const CourseGrid = () => {
   return (
     <div className="max-w-6xl mx-auto py-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
         {courses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
