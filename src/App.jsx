@@ -11,7 +11,10 @@ import Maths from './routes/courses/maths/page'
 import DailySigns from './routes/courses/daily/page'
 import Science from './routes/courses/scinece/page'
 import CreateCourse from './routes/courses/create/page'
-
+import PastCourses from "./routes/courses/pastcourses/page";
+import QuizPage from "./routes/quizes/page";
+import AlphabetQuiz from './routes/quizes/alphabetsquiz'
+import NumberQuiz from './routes/quizes/numbers'
 function App() {
     const router = createBrowserRouter([
         {
@@ -65,21 +68,23 @@ function App() {
                     element: <CreateCourse/>,
                 },
                 {
-                    path: "verified-customers",
-                    element: <h1 className="title">Past Courses</h1>,
+                    path: "past-courses",
+                    element: <PastCourses/>,
                 },
                 {
-                    path: "products",
-                    element: <h1 className="title">Products</h1>,
+                    path: "quizes",
+                    element: <QuizPage/>,
                 },
                 {
-                    path: "new-product",
-                    element: <h1 className="title">New Product</h1>,
+                    path: "quizes/alphabets",
+                    element: <AlphabetQuiz/>,
                 },
                 {
-                    path: "inventory",
-                    element: <h1 className="title">Inventory</h1>,
+                    path: "quizes/numbers",
+                    element: <NumberQuiz/>,
                 },
+                
+               
                 {
                     path: "settings",
                     element: <h1 className="title">Settings</h1>,
