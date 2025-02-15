@@ -105,12 +105,20 @@ const QuizPage = () => {
         </div>
 
         {/* Next Question Button */}
+        <div className="flex flex-row justify-between">
         <button
           onClick={handleNextQuestion}
-          className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
+          className="mt-4 bg-green-500 font-bold text-white px-4 py-2 rounded-lg"
         >
           Next Question
         </button>
+        <button
+          onClick={handleNextQuestion}
+          className="mt-4 bg-green-500  font-bold text-white px-4 py-2 rounded-lg"
+        >
+          Submit Answer
+        </button>
+        </div>
       </div>
     </div>
   );
