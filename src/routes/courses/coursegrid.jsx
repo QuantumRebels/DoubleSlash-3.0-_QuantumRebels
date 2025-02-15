@@ -51,9 +51,11 @@ const CourseCard = ({ course }) => {
       <div className="mt-4">
         <h3 className="text-lg font-bold">{course.title}</h3>
         <p className="text-slate-950 mt-2 text-md">{course.description}</p>
+        <a href="/courses/alphabets">
         <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
           Explore Course
         </button>
+        </a>
       </div>
     </div>
   );
