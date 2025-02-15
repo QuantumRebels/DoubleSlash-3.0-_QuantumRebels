@@ -6,7 +6,7 @@ import Layout from "@/routes/layout";
 import DashboardPage from "@/routes/dashboard/page";
 import Courses from "@/routes/courses/page";
 import Alphabets from './routes/courses/alpabets/alphabets'
-
+import Numbers from './routes/courses/numbers/numbers'
 
 function App() {
     const router = createBrowserRouter([
@@ -34,6 +34,11 @@ function App() {
                 {
                     path: "courses/alphabets",
                     element: <Alphabets />, 
+    
+                },
+                {
+                    path: "courses/numbers",
+                    element: <Numbers />, 
     
                 },
                 {
