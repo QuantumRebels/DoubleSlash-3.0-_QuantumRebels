@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserCredentials{
+  id           String   @id @default(uuid())
+  username     String   @unique
+  email        String   @unique
+  password String
+  userRole String @default("student")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  
+  
+}
+
+model module{
+  id String @id  @default(uuid())
+  title String 
+  description String
+
+  category String
+
+  teacherId String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+} 
+
+model lesson{
+  id String @id  @default(uuid())
+  title String
+  signImgUrl String
+  moduleId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+}
+
+model Content{
+  id String @id @default(uuid())
+  lessonId String
+  moduleId String 
+  content String
+  signImgUrl String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+}
+
+model Exercise{
+  id String @id @default(uuid())
+  
+  moduleId String 
+  lessonId String
+  question String
+  options String[]
+  answer String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+}
+
+model ExerciseResult{
+  id String @id @default(uuid())
+  userId String
+  exerciseId String
+  isCorrect Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+}
+
+model Progress{
+  id String @id @default(uuid())
+  userId String
+  moduleId String
+  exerciseResult String
+  progressing Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+}
+
+model SignDictonary{
+  id String @id @default(uuid())
+
+  word String
+  signImageURL String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+}
+
