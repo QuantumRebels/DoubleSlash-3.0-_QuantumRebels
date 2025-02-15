@@ -27,21 +27,21 @@ const courses = [
     title: "Mathematics of ISL",
     image: Course3,
     description: "Explore mathematical signs and problem-solving techniques in ISL.",
-    path : "/alphabets"
+    path : "/courses/maths"
   },
   {
     id: 4,
     title: "Science through ISL ",
     image:Course4,
     description: "Dive into scientific concepts and their representation in ISL.",
-    path : "/alphabets"
+    path : "/courses/science"
   },
   {
     id: 5,
     title: "Daily Conversations of ISL",
     image: Course5,
     description: "Master everyday communication using ISL with Interactive Modules",
-    path : "/alphabets"
+    path : "/courses/dailysigns"
   },
 ];
 

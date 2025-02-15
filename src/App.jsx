@@ -7,6 +7,10 @@ import DashboardPage from "@/routes/dashboard/page";
 import Courses from "@/routes/courses/page";
 import Alphabets from './routes/courses/alpabets/alphabets'
 import Numbers from './routes/courses/numbers/numbers'
+import Maths from './routes/courses/maths/page'
+import DailySigns from './routes/courses/daily/page'
+import Science from './routes/courses/scinece/page'
+import CreateCourse from './routes/courses/create/page'
 
 function App() {
     const router = createBrowserRouter([
@@ -42,8 +46,23 @@ function App() {
     
                 },
                 {
-                    path: "new-customer",
-                    element: <h1 className="title">Upcoming Courses</h1>,
+                    path: "courses/maths",
+                    element: <Maths />, 
+    
+                },
+                {
+                    path: "courses/science",
+                    element: <Science/>, 
+    
+                },
+                {
+                    path: "courses/dailysigns",
+                    element: <DailySigns />, 
+    
+                },
+                {
+                    path: "create-courses",
+                    element: <CreateCourse/>,
                 },
                 {
                     path: "verified-customers",
