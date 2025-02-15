@@ -1,4 +1,4 @@
-import { ChartColumn, BookUser ,  ShieldEllipsis ,  BookmarkPlus ,Home, BookmarkCheck , NotepadText, Package, PackagePlus, Settings, ShoppingBag, UserCheck, UserPlus, Users } from "lucide-react";
+import { ChartColumn, BookUser ,  ShieldEllipsis ,  BookmarkPlus ,Home, BookmarkCheck , NotepadText, Package, PackagePlus, Settings, ShoppingBag, UserCheck, UserPlus, Users , User } from "lucide-react";
 
 import ProfileImage from "@/assets/profile-image.jpg";
 import ProductImage from "@/assets/product-image.jpg";
@@ -40,23 +40,19 @@ export const navbarLinks = [
             {
                 label: "Past Courses",
                 icon: BookmarkCheck ,
-                path: "/verified-customers",
+                path: "/past-courses",
             },
         ],
     },
     {
-        title: "Curicullars",
+        title: "Take Tests",
         links: [
             {
                 label: "Quizes",
                 icon: BookUser,
-                path: "/products",
+                path: "/quizes",
             },
-            {
-                label: "Leaderboard",
-                icon: ShieldEllipsis,
-                path: "/new-product",
-            },
+           
             {
                 label: "Community",
                 icon: Users,
@@ -65,12 +61,12 @@ export const navbarLinks = [
         ],
     },
     {
-        title: "Settings",
+        title: "Profile",
         links: [
             {
-                label: "Settings",
-                icon: Settings,
-                path: "/settings",
+                label: "Profile",
+                icon: User,
+                path: "/profile",
             },
         ],
     },
