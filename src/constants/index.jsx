@@ -30,7 +30,7 @@ export const navbarLinks = [
             {
                 label: "Courses",
                 icon:  BookUser,
-                path: "/customers",
+                path: "/courses",
             },
             {
                 label: "New Courses",
