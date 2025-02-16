@@ -131,5 +131,3 @@ CLOUDINARY_URL=your_cloudinary_url
 🚀 **Submitted on Devfolio**  
 
 ---
-
-This README now looks more visually structured, engaging, and professional. Let me know if you'd like any further refinements! 🚀
