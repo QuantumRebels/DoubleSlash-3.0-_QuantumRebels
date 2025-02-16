@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const CourseModule = ({ isOpen, onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [signImgUrl, setsignImgUrl] = useState("");
+  const [signimg, setsignimg] = useState("")
   const [moduleId, setmoduleId] = useState("alphabets");
   const [modules, setmodules] = useState([])
   const [isUploading, setisUploading] = useState(false)
@@ -31,9 +32,44 @@ const CourseModule = ({ isOpen, onClose, onSave }) => {
     .then(res=>{
       console.log(res.data)
       setisUploading(false)
+      onSave();
+      onClose();
     
     })
     
+  };
+
+  const handlemoduleimgUpload = async (e) => {
+    setisUploading(true);
+    e.preventDefault();
+    console.log('Printed')
+    const data = new FormData();
+    data.append("file", signimg);
+    data.append("upload_preset", "myCloud");
+    data.append("cloud_name", "dcn17cw7n");
+    try {
+      if (signimg === null) {
+        return alert("Please upload an image");
+      }
+      
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/dcn17cw7n/image/upload",
+        data
+      );
+
+      setsignImgUrl(res.data.url);
+      //   console.log(res.data.url);
+      // Toast.success()
+      // Swal.fire({
+      //   title: "Image Uploaded Successfully",
+      //   text: "Your image has been uploaded successfully",
+      //   icon: "success",
+      // })
+      alert("Image Uploaded Successfully",res.data.url);
+      setisUploading(false);
+    } catch (error) {
+      console.error("An error occurred while uploading", error);
+    }
   };
 
   if (!isOpen) return null;
@@ -52,14 +88,27 @@ const CourseModule = ({ isOpen, onClose, onSave }) => {
           placeholder="Enter module title"
         />
 
-        <label className="block text-md font-medium text-gray-800 mt-3">Image URL</label>
-        <input
-          type="text"
-          value={signImgUrl}
-          onChange={(e) => setsignImgUrl(e.target.value)}
-          className="w-full p-2 border rounded mt-1"
-          placeholder="Enter image URL"
-        />
+<label className="block text-md font-medium text-gray-800 mt-3 mb-2">Upload moduleimg for Module Cover </label>
+        <div className="border rounded p-3 flex items-center justify-between">
+        <label className=" text-white h-12 mr-5 p-5">
+                    Upload Module Cover image
+                  </label>
+                  <input
+                    onChange={(e) => setsignimg(e.target.files[0])}
+                    className=" text-white "
+                    type="file"
+                    name="signimg"
+                    id="signimg"
+                  />
+                  <button
+                    disabled={isUploading}
+                    className="text-3xl "
+                    onClick={handlemoduleimgUpload}
+                  >
+                    {isUploading?(<span>Uploading</span>):(<span>Upload</span>)}
+                    
+                  </button>
+        </div>
 
         <label className="block text-md font-medium text-gray-800 mt-3">Select Module</label>
         <select

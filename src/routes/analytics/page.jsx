@@ -4,11 +4,11 @@ import { useTheme } from "@/hooks/use-theme";
 import { AnalyticsData } from "@/constants";
 import ProfileImage from '../../assets/SaptaDev27.jpg'
 import { CreditCard, DollarSign, Package, PencilLine, Star, Trash, ShieldCheck, TrendingUp, Users, BookUser } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Analytics = () => {
   const { theme } = useTheme();
-
-
+  const {t} = useTranslation();
 
   return (
     <div className="flex flex-col flex-wrap w-full">
@@ -19,7 +19,7 @@ const Analytics = () => {
           </div>
           <div className="text-center mt-6 ">
             <h2 className="text-2xl font-bold dark:text-blue-500">Saptarshi Paul</h2>
-            <p className="dark:text-gray-50 mt-2 ">Level: Intermediate</p>
+            <p className="dark:text-gray-50 mt-2 ">{t('Level: Intermediate')}</p>
 
           </div>
         </div>
@@ -28,13 +28,13 @@ const Analytics = () => {
             <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
               <ShieldCheck size={26} />
             </div>
-            <p className="card-title text-2xl">Current Badge</p>
+            <p className="card-title text-2xl">{t("Current Badge")}</p>
           </div>
           <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-            <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50 ml-2">Intermediate</p>
+            <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50 ml-2">{t('Intermediate')}</p>
             <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
               <TrendingUp size={18} />
-              In Top 10%
+              {t('In Top 10%')}
             </span>
           </div>
         </div>
@@ -43,20 +43,20 @@ const Analytics = () => {
             <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
               <ShieldCheck size={26} />
             </div>
-            <p className="card-title text-2xl">Rank In LeaderBoard</p>
+            <p className="card-title text-2xl">{t('Rank In LeaderBoard')}</p>
           </div>
           <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
             <p className="text-4xl font-bold text-slate-900 transition-colors dark:text-slate-50 ml-2">15</p>
             <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
               <TrendingUp size={18} />
-              In Top 10%
+              {t('In Top 10%')}
             </span>
           </div>
         </div>
       </div>
       <div className="card col-span-1 md:col-span-2 lg:col-span-4   w-full mt-12">
         <div className="card-header">
-          <p className="card-title text-2xl">Performance Analytics of the Entire Year</p>
+          <p className="card-title text-2xl">{t('Performance Analytics of the Entire Year')}</p>
         </div>
         <div className="card-body p-0">
           <ResponsiveContainer
