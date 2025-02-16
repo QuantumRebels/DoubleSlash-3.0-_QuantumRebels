@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export const Footer = () => {
+    const {t}=useTranslation()
     return (
         <footer className="flex flex-wrap items-center justify-between gap-4 pt-4">
             <p className="text-base font-medium text-slate-900 dark:text-slate-50">© 2025  GestureLearn All Rights Reserved</p>
@@ -7,7 +10,7 @@ export const Footer = () => {
                     href="#"
                     className="link"
                 >
-                    Privacy Policy
+                    {t("privacy_policy")}
                 </a>
                 <a
                     href="#"

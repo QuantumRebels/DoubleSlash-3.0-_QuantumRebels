@@ -5,10 +5,11 @@ import { Bell, ChevronsLeft, Moon, Search, Sun } from "lucide-react";
 import profileImg from "@/assets/profile-image.jpg";
 
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export const Header = ({ collapsed, setCollapsed }) => {
     const { theme, setTheme } = useTheme();
-
+    const {t} = useTranslation();
     return (
         <header className="relative z-10 flex h-[60px] items-center justify-between bg-white px-4 shadow-md transition-colors dark:bg-slate-900">
             <div className="flex items-center gap-x-3">
@@ -27,7 +28,7 @@ export const Header = ({ collapsed, setCollapsed }) => {
                         type="text"
                         name="search"
                         id="search"
-                        placeholder="Search..."
+                        placeholder={t("Search...")}
                         className="w-full bg-transparent text-slate-900 outline-0 placeholder:text-slate-300 dark:text-slate-50"
                     />
                 </div>
