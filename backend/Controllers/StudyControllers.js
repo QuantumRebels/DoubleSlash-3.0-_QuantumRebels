@@ -48,7 +48,7 @@ const moduleprogressupdates=async(userId,moduleId,moduleCompletion )=>{
   })
 }
 const getcompletemodules=async(userId,moduleId)=>{
-  return await prisma.modulecompletion.findMany({where:{userId:userId,moduleId:moduleId}})
+  return await prisma.modulecompletion.findFirst({where:{userId:userId,moduleId:moduleId}})
 }
 
 const generateQuestion = async (modulename) => {

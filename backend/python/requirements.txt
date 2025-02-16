@@ -4,3 +4,6 @@ google-generativeai
 matplotlib
 seaborn
 xhtml2pdf
+python-dotenv
+flask
+flask-cors

@@ -7,12 +7,14 @@ import Course5 from '../../assets/courses/course5.jpg'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
+import { useTranslation } from "react-i18next";
 
 
 
 
 
 const CourseCard = ({ course }) => {
+  const { t } = useTranslation();
   const [modules, setmodules] = useState([])
   const fetchmodules=async()=>{
       await axios.get(`${import.meta.env.VITE_DEV_URL}study/getmodules`)
@@ -28,12 +30,7 @@ const CourseCard = ({ course }) => {
     fetchmodules()
   },[])
 
-  const navigate=useNavigate()
-  const routetopage=(id)=>{
-    console.log(id)
-    navigate(`courses/${id}`)
-  }
-
+  
   return (
 
     <main className="grid grid-cols-3 space-x-10 mt-12">
@@ -55,7 +52,7 @@ const CourseCard = ({ course }) => {
           <a href={`/courses/${module.id}`}>
         <button  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
 
-          Explore Course
+          {t("Explore Course")}
         </button>
         </a>
         <p>{module.moduleprice}</p>

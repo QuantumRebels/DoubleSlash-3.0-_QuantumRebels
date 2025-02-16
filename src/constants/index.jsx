@@ -3,6 +3,7 @@ import { ChartColumn, BookUser ,  ShieldEllipsis ,  BookmarkPlus ,Home, Bookmark
 import ProfileImage from "@/assets/profile-image.jpg";
 import ProductImage from "@/assets/product-image.jpg";
 
+
 export const navbarLinks = [
     {
         title: "Dashboard",
