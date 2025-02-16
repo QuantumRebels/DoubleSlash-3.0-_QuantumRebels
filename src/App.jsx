@@ -15,7 +15,8 @@ import PastCourses from "./routes/courses/pastcourses/page";
 import QuizPage from "./routes/quizes/page";
 import AlphabetQuiz from './routes/quizes/alphabetsquiz'
 import NumberQuiz from './routes/quizes/numbers'
-import Landing from './routes/landing/landing'
+import Login from './routes/profile/login'
+import Register from './routes/profile/signup'
 function App() {
     const router = createBrowserRouter([
         {
@@ -87,8 +88,12 @@ function App() {
                 
                
                 {
-                    path: "settings",
-                    element: <h1 className="title">Settings</h1>,
+                    path: "profile",
+                    element: <Login/>,
+                },
+                {
+                    path: "profile/register",
+                    element: <Register/>,
                 },
             ],
         },
