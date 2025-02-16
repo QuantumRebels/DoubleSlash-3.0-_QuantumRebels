@@ -9,8 +9,11 @@ import logoDark from "@/assets/logo-dark.svg";
 import { cn } from "@/utils/cn";
 
 import PropTypes from "prop-types";
+import LanguageSwitcher from "./translate";
+import { useTranslation } from "react-i18next";
 
 export const Sidebar = forwardRef(({ collapsed }, ref) => {
+    
     return (
         <aside
             ref={ref}
@@ -56,6 +59,7 @@ export const Sidebar = forwardRef(({ collapsed }, ref) => {
                     </nav>
                 ))}
             </div>
+            <LanguageSwitcher/>
         </aside>
     );
 });

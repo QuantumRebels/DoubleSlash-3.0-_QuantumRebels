@@ -14,16 +14,17 @@ const ModuleCompletion = () => {
       
     })
   }
+  const checkcompleted=async()=>{
+    await axios.get(`${import.meta.env.VITE_DEV_URL}study/completedmodules`,{userId:"192ee0b0-c661-4884-b081-6a84397474d9",moduleId:id})
+    .then(res=>{
+      console.log(res.data.data)
+      if(res.data.data[0].moduleCompletion===true){
+        setCompleted(true)
+      }
+    })
+  }
   useEffect(()=>{
-    const checkcompleted=async()=>{
-      await axios.get(`${import.meta.env.VITE_DEV_URL}study/completedmodules`,{userId:"192ee0b0-c661-4884-b081-6a84397474d9",moduleId:id})
-      .then(res=>{
-        console.log(res.data.data)
-        if(res.data.data[0].moduleCompletion===true){
-          setCompleted(true)
-        }
-      })
-    }
+    
     checkcompleted()
   },[])
 

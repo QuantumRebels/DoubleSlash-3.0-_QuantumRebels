@@ -1,20 +1,39 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
 
 const CourseModule = ({ isOpen, onClose, onSave }) => {
   const [title, setTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [category, setCategory] = useState("alphabets");
+  const [signImgUrl, setsignImgUrl] = useState("");
+  const [moduleId, setmoduleId] = useState("alphabets");
+  const [modules, setmodules] = useState([])
+  const [isUploading, setisUploading] = useState(false)
 
-  const handleSubmit = () => {
-    if (!title || !imageUrl) {
+  const fetchmodules=async()=>{
+    await axios.get(`${import.meta.env.VITE_DEV_URL}study/getmodules`)
+    .then(res=>{
+      console.log(res.data.data)
+      setmodules(res.data.data)
+    })
+  }
+
+  useEffect(()=>{
+    fetchmodules()
+  },[])
+  const handleSubmit = (e) => {
+    setisUploading(true)
+    e.preventDefault()
+    if (!title || !signImgUrl) {
       alert("Please fill all fields!");
       return;
     }
-    onSave({ title, imageUrl, category });
-    setTitle("");
-    setImageUrl("");
-    setCategory("alphabets");
-    onClose();
+    axios.post(`${import.meta.env.VITE_DEV_URL}study/createlesson`,{title,signImgUrl,moduleId})
+    .then(res=>{
+      console.log(res.data)
+      setisUploading(false)
+    
+    })
+    
   };
 
   if (!isOpen) return null;
@@ -36,23 +55,25 @@ const CourseModule = ({ isOpen, onClose, onSave }) => {
         <label className="block text-md font-medium text-gray-800 mt-3">Image URL</label>
         <input
           type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          value={signImgUrl}
+          onChange={(e) => setsignImgUrl(e.target.value)}
           className="w-full p-2 border rounded mt-1"
           placeholder="Enter image URL"
         />
 
-        <label className="block text-md font-medium text-gray-800 mt-3">Category</label>
+        <label className="block text-md font-medium text-gray-800 mt-3">Select Module</label>
         <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          value={moduleId}
+          onChange={(e) => setmoduleId(e.target.value)}
           className="w-full p-2 border rounded mt-1"
         >
-          <option value="alphabets">Alphabets of ISL</option>
-          <option value="numbers">Numbers of ISL</option>
-          <option value="maths">Maths of ISL</option>
-          <option value="science">Science of ISL</option>
-          <option value="daily">Daily Signs of ISL</option>
+          {
+            modules &&
+            modules.map((mod, index) => (
+              <option key={index} value={mod.id}>{mod.title}</option>
+            ))
+          }
+          
          
         </select>
 
