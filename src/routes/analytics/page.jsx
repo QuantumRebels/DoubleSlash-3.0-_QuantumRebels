@@ -55,14 +55,10 @@ const Analytics = () => {
           </div>
         </div>
 
-            
+      </div>     
 
-          </div>
-        </div>
+          
         
-       
-      
-      </div>
       <div className="card col-span-1 md:col-span-2 lg:col-span-4   w-full mt-12">
         <div className="card-header">
           <p className="card-title text-2xl">{t('Performance Analytics of the Entire Year')}</p>

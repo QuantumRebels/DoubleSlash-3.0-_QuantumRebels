@@ -1,4 +1,22 @@
+import { useState } from "react";
+
 const LoginForm = () => {
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+  const [userRole, setuserRole] = useState("")
+  
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    axios.post(`${import.meta.env.VITE_DEV_URL}auth/login`,{email,userRole,password})
+    .then(res=>{
+      console.log(res.data)
+      if(res.data==="Success"){
+        alert("Login")
+        window.localStorage.setItem('Username',res.data.username)
+        
+      }
+    })
+  }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100  rounded-xl dark:bg-slate-900">
       <div className="bg-white  dark:bg-slate-950 p-6 rounded-lg shadow-lg w-96">
@@ -6,16 +24,40 @@ const LoginForm = () => {
         <form className="flex flex-col space-y-4">
           <input 
             type="email" 
+            value={email}
+            onChange={e=>setemail(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
             placeholder="Enter Your Email" 
           />
           <input 
             type="password" 
+            value={password}
+            onChange={e=>setpassword(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
             placeholder="Enter Your Password" 
           />
+           <div className="space-y-2">
+                  <label
+                    htmlFor="userRole-select"
+                    className="block mb-2 text-xl font-medium text-gray-300 dark:text-white"
+                  >
+                    User Role:
+                  </label>
+                  <select
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    onChange={(e) => setuserRole(e.target.value)}
+                    value={userRole}
+                    name="userRole"
+                    id="userRole-select"
+                  >
+                    <option value="">--Please Select User Role--</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                    
+                  </select>
+                </div>
           <p className="text-md text-blue-500 cursor-pointer text-right">Forgot Password?</p>
-          <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Log in</button>
+          <button onSubmit={handleSubmit} className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Log in</button>
         </form>
         <a href="/profile/register">
         <p className="text-center mt-4 text-md dark:text-blue-500">
