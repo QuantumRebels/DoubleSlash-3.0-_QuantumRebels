@@ -7,17 +7,15 @@ import RecommendationBox from "./recomendation";
 const Dashboard = () => {
   // Mock Data
   const mockTests = [
-    { id: 1, name: "Basic Alphabets", completed: true, date: "2025-02-13" },
-    { id: 2, name: "Numbers & Counting", completed: false, date: "2025-02-14" },
-    { id: 3, name: "Everyday Conversations", completed: true, date: "2025-02-12" },
-    { id: 4, name: "Basic Maths", completed: false, date: "2025-02-24" },
+    { id: 1, name: "Basic Alphabets", completed: true, date: "2025-02-16" },
+    { id: 2, name: "Numbers & Counting", completed: true, date: "2025-02-16" },
+    
   ];
 
   const mockScores = [
-    { testName: "Basic Alphabets", score: 85 },
-    { testName: "Numbers & Counting", score: 70 },
-    { testName: "Everyday Conversations", score: 90 },
-    { testName: "Basic Maths", score: 60 },
+    { testName: "Basic Alphabets", score: 5 },
+    { testName: "Numbers & Counting", score: 4 },
+   
   ];
 
   const mockReview = {
@@ -49,7 +47,7 @@ const Dashboard = () => {
       <TestList tests={mockTests} />
       <ScoreCard scores={mockScores} />
       <RecommendationBox recommendations={mockRecommendations} />
-     
+      <button className=" w-[250px] h-[40px] bg-blue-500 text-md font-semibold p-2 rounded-xl text-white mt-16 flex justify-center align-middle items-center">Generate Report</button>
   
      
     </div>
