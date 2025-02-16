@@ -15,6 +15,7 @@ import PastCourses from "./routes/courses/pastcourses/page";
 import QuizPage from "./routes/quizes/page";
 import AlphabetQuiz from './routes/quizes/alphabetsquiz'
 import NumberQuiz from './routes/quizes/numbers'
+import Landing from './routes/landing/landing'
 function App() {
     const router = createBrowserRouter([
         {
