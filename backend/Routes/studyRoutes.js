@@ -1,6 +1,6 @@
 
 import express from 'express'
-import {addContent, createExercise, createLesson, createModule, getcompletemodules, getLessonsByModuleId, getmodulebyId, getModules, moduleprogressupdates, updateresult, userprogressupdates} from '../Controllers/StudyControllers.js'
+import {addContent, createExercise, createLesson, createModule, getcompletemodules, getcompletemoduless, getLessonsByModuleId, getmodulebyId, getModules, moduleprogressupdates, updateresult, userprogressupdates} from '../Controllers/StudyControllers.js'
 
 const studyRouter=express.Router();
 
@@ -93,6 +93,16 @@ studyRouter.post('/modulecompleted',async(req,res)=>{
 studyRouter.get('/completedmodules',async(req,res)=>{
     const {userId,moduleId}=req.body;
     const response=await getcompletemodules(userId,moduleId)
+    if(response){
+        res.json({data:response})
+    }
+    else{
+        res.status(400).json({message:"Error getting completed modules"})
+    }
+})
+studyRouter.get('/completedmoduless',async(req,res)=>{
+    
+    const response=await getcompletemoduless()
     if(response){
         res.json({data:response})
     }
