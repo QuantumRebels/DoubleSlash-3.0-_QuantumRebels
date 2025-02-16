@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { FaUpload } from "react-icons/fa"; // Importing Upload Icon
 
@@ -5,30 +6,67 @@ const CourseModal = ({ isOpen, onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("alphabets");
-  const [pricing, setPricing] = useState("free");
-  const [image, setImage] = useState(null);
+  const [moduleprice, setmoduleprice] = useState("free");
+  const [moduleimg, setmoduleimg] = useState(null);
+  const [moduleimgcover, setmoduleimgcover] = useState(null);
+  const [isUploading, setisUploading] = useState(false)
+  
 
-  const handleSubmit = () => {
-    if (!title || !description || !image) {
-      alert("Please fill all fields and upload an image!");
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (!title || !description || !moduleimg) {
+      alert("Please fill all fields and upload an moduleimg!");
       return;
     }
-    onSave({ title, description, category, pricing, image });
-    setTitle("");
-    setDescription("");
-    setCategory("alphabets");
-    setPricing("free");
-    setImage(null);
-    onClose();
+
+    axios.post(`${import.meta.env.VITE_DEV_URL}study/createmodule`,{title, description, category, teacherId:"5b48a2ef-611c-4bfe-8c14-7642e68d8b7b",moduleimg,moduleprice})
+    .then(res=>{
+      console.log(res.data)
+
+    })
+    // onSave({ title, description, category, moduleprice, moduleimg });
+    // setTitle("");
+    // setDescription("");
+    // setCategory("alphabets");
+    // setmoduleprice("free");
+    // setmoduleimg(null);
+    // onClose();
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file)); // Convert file to URL for preview
+  const handlemoduleimgUpload = async (e) => {
+    setisUploading(true);
+    e.preventDefault();
+    console.log('Printed')
+    const data = new FormData();
+    data.append("file", moduleimgcover);
+    data.append("upload_preset", "myCloud");
+    data.append("cloud_name", "dcn17cw7n");
+    try {
+      if (moduleimgcover === null) {
+        return alert("Please upload an image");
+      }
+      
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/dcn17cw7n/image/upload",
+        data
+      );
+
+      setmoduleimg(res.data.url);
+      //   console.log(res.data.url);
+      // Toast.success()
+      // Swal.fire({
+      //   title: "Image Uploaded Successfully",
+      //   text: "Your image has been uploaded successfully",
+      //   icon: "success",
+      // })
+      alert("Image Uploaded Successfully",res.data.url);
+      setisUploading(false);
+    } catch (error) {
+      console.error("An error occurred while uploading", error);
     }
   };
-
+ 
   if (!isOpen) return null;
 
   return (
@@ -44,25 +82,27 @@ const CourseModal = ({ isOpen, onClose, onSave }) => {
           className="w-full p-2 border rounded mt-1 text-black"
           placeholder="Enter course title"
         />
-         {/* Image Upload Section */}
-        <label className="block text-md font-medium text-gray-800 mt-3 mb-2">Upload Image for Module Cover </label>
+         {/* moduleimg Upload Section */}
+        <label className="block text-md font-medium text-gray-800 mt-3 mb-2">Upload moduleimg for Module Cover </label>
         <div className="border rounded p-3 flex items-center justify-between">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="hidden"
-            id="imageUpload"
-          />
-          <label
-            htmlFor="imageUpload"
-            className="flex items-center cursor-pointer text-blue-600"
-          >
-            <FaUpload className="mr-2" /> Upload Image
-          </label>
-          {image && (
-            <img src={image} alt="Preview" className="h-16 w-16 rounded-lg ml-3 object-cover" />
-          )}
+        <label className=" text-white h-12 mr-5 p-5">
+                    Upload Module Cover image
+                  </label>
+                  <input
+                    onChange={(e) => setmoduleimgcover(e.target.files[0])}
+                    className=" text-white "
+                    type="file"
+                    name="moduleimgcover"
+                    id="moduleimgcover"
+                  />
+                  <button
+                    disabled={isUploading}
+                    className="text-3xl "
+                    onClick={handlemoduleimgUpload}
+                  >
+                    {isUploading?(<span>Uploading</span>):(<span>Upload</span>)}
+                    
+                  </button>
         </div>
         <label className="block text-md font-medium text-gray-800 mt-3">Description Of Module</label>
         <textarea
@@ -85,8 +125,8 @@ const CourseModal = ({ isOpen, onClose, onSave }) => {
 
         <label className="block text-md font-medium text-gray-800 mt-3">Pricing Of Module</label>
         <select
-          value={pricing}
-          onChange={(e) => setPricing(e.target.value)}
+          value={moduleprice}
+          onChange={(e) => setmoduleprice(e.target.value)}
           className="w-full p-2 border rounded mt-1"
         >
           <option value="free">Free</option>
