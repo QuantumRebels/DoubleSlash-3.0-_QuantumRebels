@@ -1,6 +1,27 @@
 {
-    "welcome": "Welcome",
-    "login": "Login",
-    "signup": "Sign Up",
-    "privacy_policy": "Privacy Policy"
-  }
+  "Level: Intermediate": "Level: Intermediate",
+  "Intermediate": "Intermediate",
+  "Current Badge": "Current Badge",
+  "In Top 10%": "In Top 10%",
+  "Rank In LeaderBoard": "Rank In LeaderBoard",
+  "Performance Analytics of the Entire Year": "Performance Analytics of the Entire Year",
+  "Dashboard": "Dashboard",
+  "Total Modules Completed": "Total Modules Completed",
+  "Total Quizzes Attempted": "Total Quizzes Attempted",
+  "Total Questions Solved": "Total Questions Solved",
+  "Total Active Hours": "Total Active Hours",
+  "Overview of Questions Solved in a Week": "Overview of Questions Solved in a Week",
+  "Recent Notifications": "Recent Notifications",
+  "Top Courses": "Top Courses",
+  "Id": "Id",
+  "Course": "Course",
+  "Couse Type": "Couse Type",
+  "Status": "Status",
+  "Rating": "Rating",
+  "Actions": "Actions",
+  "Completed": "Completed",
+  "Pending": "Pending",
+  "Course Type": "Course Type",
+  "Free": "free",
+  "paid": "paid"
+}

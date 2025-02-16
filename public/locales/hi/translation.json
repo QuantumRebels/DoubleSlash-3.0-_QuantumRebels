@@ -1,6 +1,27 @@
 {
-    "welcome": "स्वागत है",
-    "login": "लॉगिन करें",
-    "signup": "साइन अप करें",
-    "privacy_policy": "गोपनीयता नीति"
-  }
+  "Level: Intermediate": "स्तर: इंटरमीडिएट",
+  "Intermediate": "इंटरमीडिएट",
+  "Current Badge": "वर्तमान बैज",
+  "In Top 10%": "शीर्ष 10% में",
+  "Rank In LeaderBoard": "लीडरबोर्ड में रैंक",
+  "Performance Analytics of the Entire Year": "सम्पूर्ण साल का परफ़ॉर्मेंस ऑडर",
+  "Dashboard": "डैशबोर्ड",
+  "Total Modules Completed": "कुल पूर्ण किए गए मॉड्यूल",
+  "Total Quizzes Attempted": "कुल प्रयास किए गए क्विज़",
+  "Total Questions Solved": "कुल हल किए गए प्रश्न",
+  "Total Active Hours": "कुल सक्रिय घंटे",
+  "Overview of Questions Solved in a Week": "एक सप्ताह में हल किए गए प्रश्नों का अवलोकन",
+  "Recent Notifications": "हाल की सूचनाएं",
+  "Top Courses": "शीर्ष पाठ्यक्रम",
+  "Id": "पहचान",
+  "Course": "पाठ्यक्रम",
+  "Couse Type": "पाठ्यक्रम प्रकार",
+  "Status": "स्थिति",
+  "Rating": "रेटिंग",
+  "Actions": "क्रियाएँ",
+  "Completed": "पूर्ण",
+  "Pending": "लंबित",
+  "Course Type": "पाठ्यक्रम का प्रकार",
+  "Free": "मुक्त",
+  "paid": "चुकाया गया"
+}
