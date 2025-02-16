@@ -50,6 +50,9 @@ const moduleprogressupdates=async(userId,moduleId,moduleCompletion )=>{
 const getcompletemodules=async(userId,moduleId)=>{
   return await prisma.modulecompletion.findFirst({where:{userId:userId,moduleId:moduleId}})
 }
+const getcompletemoduless=async()=>{
+  return await prisma.modulecompletion.findMany()
+}
 
 const generateQuestion = async (modulename) => {
   try {
@@ -106,4 +109,4 @@ const updateresult=async(userId,exerciseId,isCorrect)=>{
 
 
 
-export {createModule,getModules,getmodulebyId,createLesson,getLessonsByModuleId,getcompletemodules,createExercise,generateQuestion,addContent,updateresult,userprogressupdates,moduleprogressupdates}
+export {createModule,getModules,getmodulebyId,createLesson,getcompletemoduless,getLessonsByModuleId,getcompletemodules,createExercise,generateQuestion,addContent,updateresult,userprogressupdates,moduleprogressupdates}
