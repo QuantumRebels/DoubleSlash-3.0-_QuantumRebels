@@ -19,6 +19,7 @@ const Analytics = () => {
           </div>
           <div className="text-center mt-6 ">
             <h2 className="text-2xl font-bold dark:text-blue-500">Saptarshi Paul</h2>
+
             <p className="dark:text-gray-50 mt-2 ">{t('Level: Intermediate')}</p>
 
           </div>
@@ -53,6 +54,14 @@ const Analytics = () => {
             </span>
           </div>
         </div>
+
+            
+
+          </div>
+        </div>
+        
+       
+      
       </div>
       <div className="card col-span-1 md:col-span-2 lg:col-span-4   w-full mt-12">
         <div className="card-header">

@@ -49,9 +49,11 @@ const DashboardPage = () => {
 
     return (
         <div className="flex flex-col gap-y-4">
+
             <h1 className="title">{t('Dashboard')}</h1>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <div className="card">
+
                     <div className="card-header">
                         <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
                             <ShieldCheck size={26} />
@@ -66,7 +68,7 @@ const DashboardPage = () => {
                         </span>
                     </div>
                 </div>
-                <div className="card">
+                <div className="card ">
                     <div className="card-header">
                         <div className="rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
                             <BookUser size={26} />
@@ -74,13 +76,14 @@ const DashboardPage = () => {
                         <p className="card-title">{t('Total Quizzes Attempted')}</p>
                     </div>
                     <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-                        <p className="text-4xl ml-2 font-bold text-slate-900 transition-colors dark:text-slate-50">16</p>
+                        <p className="text-4xl ml-2 font-bold text-slate-900 transition-colors dark:text-slate-50">2</p>
                         <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
                             <TrendingUp size={18} />
                             12%
                         </span>
                     </div>
                 </div>
+
                 <div className="card">
                     <div className="card-header">
                         <div className="rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
@@ -111,13 +114,17 @@ const DashboardPage = () => {
                         </span>
                     </div>
                 </div>
+
+                
+                
+
             </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <div className="card col-span-1 md:col-span-2 lg:col-span-4">
+            <div className="mb-8 mt-4">
+                <div className="card col-span-1 md:col-span-2 lg:col-span-4 w-full">
                     <div className="card-header">
                         <p className="card-title">{t('Overview of Questions Solved in a Week')}</p>
                     </div>
-                    <div className="card-body p-0">
+                    <div className="card-body p-0 w-full">
                         <ResponsiveContainer
                             width="100%"
                             height={300}
@@ -181,32 +188,7 @@ const DashboardPage = () => {
                         </ResponsiveContainer>
                     </div>
                 </div>
-                <div className="card col-span-1 md:col-span-2 lg:col-span-3">
-                    <div className="card-header">
-                        <p className="card-title">{t('Recent Notifications')}</p>
-                    </div>
-                    <div className="card-body h-[300px] overflow-auto p-0">
-                        {recentSalesData.map((sale) => (
-                            <div
-                                key={sale.id}
-                                className="flex items-center justify-between gap-x-4 py-2 pr-2"
-                            >
-                                <div className="flex items-center gap-x-4">
-                                    <img
-                                        src={sale.image}
-                                        alt={sale.name}
-                                        className="size-10 flex-shrink-0 rounded-full object-cover"
-                                    />
-                                    <div className="flex flex-col gap-y-2">
-                                        <p className="font-medium text-slate-900 dark:text-slate-50">{sale.name}</p>
-                                        <p className="text-sm text-slate-600 dark:text-slate-400">{sale.email}</p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        ))}
-                    </div>
-                </div>
+
             </div>
             <div className="card">
                 <div className="card-header">
