@@ -1,8 +1,6 @@
-Here’s a polished, visually appealing, and professional version of your README with improved structure, formatting, and clarity. I've also added some emojis for emphasis and readability.  
 
----
 
-# ✋ Gesture Learn – AI-Based Learning for the Deaf & Mute  
+# ✋ GestureLearn – AI-Based Learning for the Deaf & Mute  
 
 Empowering accessibility through AI-driven Indian Sign Language (ISL) education.  
 
