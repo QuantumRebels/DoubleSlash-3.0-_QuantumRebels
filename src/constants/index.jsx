@@ -54,11 +54,7 @@ export const navbarLinks = [
                 path: "/quizes",
             },
            
-            {
-                label: "Community",
-                icon: Users,
-                path: "/inventory",
-            },
+            
         ],
     },
     {

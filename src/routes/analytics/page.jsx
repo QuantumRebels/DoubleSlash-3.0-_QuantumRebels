@@ -19,40 +19,13 @@ const Analytics = () => {
           </div>
           <div className="text-center mt-6 ">
             <h2 className="text-2xl font-bold dark:text-blue-500">Saptarshi Paul</h2>
-            <p className="dark:text-gray-50 mt-2 ">Level: Intermediate</p>
+            
 
           </div>
         </div>
-        <div className="card h-56 w-80 mt-10 ml-48">
-          <div className="card-header">
-            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
-              <ShieldCheck size={26} />
-            </div>
-            <p className="card-title text-2xl">Current Badge</p>
-          </div>
-          <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-            <p className="text-3xl font-bold text-slate-900 transition-colors dark:text-slate-50 ml-2">Intermediate</p>
-            <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
-              <TrendingUp size={18} />
-              In Top 10%
-            </span>
-          </div>
-        </div>
-        <div className="card h-56 w-80 mt-10 mr16">
-          <div className="card-header">
-            <div className="w-fit rounded-lg bg-blue-500/20 p-2 text-blue-500 transition-colors dark:bg-blue-600/20 dark:text-blue-600">
-              <ShieldCheck size={26} />
-            </div>
-            <p className="card-title text-2xl">Rank In LeaderBoard</p>
-          </div>
-          <div className="card-body bg-slate-100 transition-colors dark:bg-slate-950">
-            <p className="text-4xl font-bold text-slate-900 transition-colors dark:text-slate-50 ml-2">15</p>
-            <span className="flex w-fit items-center gap-x-2 rounded-full border border-blue-500 px-2 py-1 font-medium text-blue-500 dark:border-blue-600 dark:text-blue-600">
-              <TrendingUp size={18} />
-              In Top 10%
-            </span>
-          </div>
-        </div>
+        
+       
+       
       </div>
       <div className="card col-span-1 md:col-span-2 lg:col-span-4   w-full mt-12">
         <div className="card-header">
