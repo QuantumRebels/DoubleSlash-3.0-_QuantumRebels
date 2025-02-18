@@ -3,6 +3,7 @@ import TestList from "./tests";
 import ScoreCard from "./score";
 
 import RecommendationBox from "./recomendation";
+import axios from "axios";
 
 const Dashboard = () => {
   // Mock Data
@@ -18,8 +19,11 @@ const Dashboard = () => {
    
   ];
 
-  const showReport=()=>{
-    axios.post('http://localhost:5000/generate-report',{
+  const [isUploading, setisUploading] = useState(false)
+  
+  const showReport=async()=>{
+    setisUploading(true)
+    await axios.post('http://localhost:8001/generate-report',{
       "overall_performance": {
           "Student ID": "S1",
           "Student Name": "Student 1",
@@ -46,6 +50,15 @@ const Dashboard = () => {
               "Time Taken for Quiz (minutes)": 25
           }
       ]
+  })
+  .then(res=>{
+    console.log(res.data)
+    alert(`${res.data.message},${res.data.file_path}`)
+    setisUploading(false)
+  })
+  .catch(err=>{
+    console.log(err)
+    setisUploading(false)
   })
   }
   const mockReview = {
@@ -77,7 +90,7 @@ const Dashboard = () => {
       <TestList tests={mockTests} />
       <ScoreCard scores={mockScores} />
       <RecommendationBox recommendations={mockRecommendations} />
-      <button onClick={showReport} className=" w-[250px] h-[40px] bg-blue-500 text-md font-semibold p-2 rounded-xl text-white mt-16 flex justify-center align-middle items-center">Generate Report</button>
+      <button onClick={showReport} className=" w-[250px] h-[40px] bg-blue-500 text-md font-semibold p-2 rounded-xl text-white mt-16 flex justify-center align-middle items-center">{isUploading?(<span>Generating Report</span>):(<span>Generate Report</span>)}</button>
   
      
     </div>

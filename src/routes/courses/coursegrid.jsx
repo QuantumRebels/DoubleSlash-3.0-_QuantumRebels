@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Course1 from '../../assets/courses/course1.jpg'
-import Course2 from '../../assets/courses/course2.jpg'
-import Course3 from '../../assets/courses/course3.jpg'
-import Course4 from '../../assets/courses/course4.jpg'
-import Course5 from '../../assets/courses/course5.jpg'
+
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
@@ -33,11 +28,11 @@ const CourseCard = ({ course }) => {
 
   return (
 
-    <main className="grid grid-cols-3 space-x-10 mt-12">
+    <main className="grid grid-cols-3 space-x-10 mt-12 ">
 
 
       {modules.map((module, idx) => (
-        <div key={idx} className="bg-white shadow-lg rounded-2xl overflow-hidden p-4 transition-transform transform hover:scale-105">
+        <div key={idx} className="bg-white shadow-lg mb-10 rounded-2xl overflow-hidden p-4 transition-transform transform hover:scale-105">
 
           <img
             src={module.moduleimg}
