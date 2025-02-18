@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <button onClick={toggleLanguage}>
+    <button className="text-white bg-blue-500 w-fit mx-auto px-2 py-1 rounded " onClick={toggleLanguage}>
       {currentLang === "en" ? "Translate to Hindi" : "Translate to English"}
     </button>
   );
